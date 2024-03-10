@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if object %}
+    Edit content "{{ object.title }}"
+  {% else %}
+    Add new content
+  {% endif %}
+{% endblock %}
+
+{% block page_title %}
+  <h2>
+    {% if object %}
+      Edit content "{{ object.title }}"
+    {% else %}
+      Add new content
+    {% endif %}
+  </h2>
+{% endblock %}
+
+{% block content %}
+  <div class="">
+    <div class="">
+      <h2>Course Info</h2>
+      <form class="" action="" method="post" enctype="multipart/form-data">
+        <div class="container">
+          {{ form.media }}
+          {{ form.as_p }}
+          {% csrf_token %}
+        </div>
+
+        <p><input type="submit" class='bg-btn-theme-one text-white' value="Save content"></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}

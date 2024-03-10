@@ -1,0 +1,42 @@
+
+https://github.com/yoshi-tuba/django-elearning
+
+
+git init 
+git add .
+git commit -m "first commit"
+
+#conda create --name venv3_11_5 python=3.11.5
+#conda activate venv3_11_5
+
+#virtualenv -p python3.6 venv_3_6
+virtualenv -p python3.9 venv_3_9
+
+#venv_3_6\Scripts\activate.bat
+venv_3_9\Scripts\activate.bat
+
+python -m pip install --upgrade pip
+
+#pip install -r requirements_3_6.txt
+pip install -r requirements.txt
+#pip install django-ckeditor --upgrade
+
+django-admin
+
+
+#django startproject ecomprj 
+
+
+
+# admin / admin@gmail.com / admin 
+
+python manage.py migrate
+python manage.py makemigrations
+
+# create admin password 
+python manage.py createsuperuser
+
+python manage.py runserver
+
+ou
+python manage.py runserver 127.0.0.1:8090

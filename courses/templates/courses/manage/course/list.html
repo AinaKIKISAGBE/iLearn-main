@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  My Courses
+{% endblock %}
+
+{% block page_title %}
+  <h2 class="bg-secondary-theme-one p-2 text-light">My Courses</h2>
+{% endblock %}
+
+{% block content %}
+  <div class="container my-2">
+
+    <div class="text-center bg-white">
+      {% for course in object_list %}
+        <div class="course-info m-1 bg-light p-2">
+          <h3>{{ course.title }}</h3>
+          {% if course.overview %}
+            <p> {{ course.overview }}</p>
+          {% endif %}
+          <div class="container">
+            <p style="" class="d-flex justify-content-center">
+              <a class="d-block" href="{% url 'courses:course_module_update' course.id %}">Edit Modules </a>
+              {% if course.modules.count > 0%}
+                &nbsp;|&nbsp; <a href="{% url 'courses:module_content_list' course.modules.first.id %}">Manage Module Contents</a>
+              {% endif %}
+            </p>
+
+            <p style="" class="d-flex justify-content-center">
+              <a class="d-block" href="{% url 'courses:assignments:course_assignment_update' course.id %}">Edit Assignments </a>
+              {% if course.assignments.count > 0%}
+                &nbsp;|&nbsp; <a href="{% url 'courses:assignments:course_a_assignment_question_list' course.id course.assignments.first.id %}">Manage Assignments Contents</a>
+              {% endif %}
+            </p>
+
+            <div class="">
+              <a class="btn btn-secondary" href="{% url 'courses:course_edit' course.id %}">Edit</a>
+              <a class="btn btn-dark" href="{% url 'courses:course_delete' course.id %}">Delete</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>You have not created any course yet</p>
+      {% endfor %}
+    </div>
+    <p class="text-right">
+      <a class="btn btn-info border border-dark"href="{% url 'courses:course_create'%}">Create New Course</a>
+    </p>
+  </div>
+
+{% endblock %}
